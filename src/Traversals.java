@@ -1,4 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
 
 public class Traversals {
 
@@ -80,7 +86,6 @@ public class Traversals {
       if(temp.right != null) queue.add(temp.right);
     }
 
-
     return list;
   }
 
@@ -92,7 +97,24 @@ public class Traversals {
    * @return the number of unique values in the tree, or 0 if the tree is null
    */
   public static int countDistinctValues(TreeNode<Integer> node) {
-    return 0;
+
+    if(node == null) return 0;
+
+    Set<Integer> set = new HashSet<>(); //Auto removes duplicates
+    Stack<TreeNode<Integer>> stack = new Stack<>();
+
+    stack.push(node);
+
+    while(!stack.isEmpty())
+    {
+      TreeNode<Integer> current = stack.pop();
+      set.add(current.value);
+
+      if(current.left != null) stack.push(current.left);
+      if(current.right != null) stack.push(current.right);
+    }
+    
+    return set.size();
   }
 
   /**
