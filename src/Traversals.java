@@ -15,7 +15,6 @@ public class Traversals {
     if(node == null) return currentValue;
     if(node.left == null && node.right == null) currentValue += node.value;
     
-
     return sumLeafNodes(node.left) + sumLeafNodes(node.right) + currentValue;
   }
 
@@ -32,14 +31,9 @@ public class Traversals {
 
     if(node == null) return currentValue;
 
-    Stack<TreeNode<?>> stack = new Stack<>();
-    stack.push(node);
-    while(!stack.isEmpty())
-    {
-      TreeNode<?> node
-    }
+    if(node.left != null || node.right != null) currentValue++;
 
-    return currentValue;
+    return currentValue + countInternalNodes(node.left) + countInternalNodes(node.right);
   }
 
   /**
